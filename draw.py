@@ -1,8 +1,16 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import sys
 
-# Load the data from the CSV file
-df = pd.read_csv("simulation_results.csv")
+# check if the filename was passed as a command-line argument
+if len(sys.argv) < 2:
+    print("Usage: python draw.py <filename>")
+    sys.exit(1)  # Exit the script if no filename is provided
+
+# first command-line argument is the script name, so the second one is the filename
+filename = sys.argv[1]
+
+df = pd.read_csv(filename)
 
 # Plotting
 fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 8))
