@@ -143,15 +143,21 @@ public class Simulation {
         return total / (patches.length * patches[0].length);
     }
 
-
     public static void main(String[] args) {
-        int intensity = 95;
-        boolean lift = true;
-        double hoursOfSleep = 8.0;
-        int daysBetweenWorkouts = 5;
-        int slowTwitchPercentage = 50;
+        // Check if enough arguments are passed
+        if (args.length < 6) {
+            System.out.println("Usage: java Simulation <intensity> <lift> <hoursOfSleep> <daysBetweenWorkouts> <slowTwitchPercentage> <daysToSimulate>");
+            return;
+        }
 
-        int days = 600;
+        // Parse the command-line arguments
+        int intensity = Integer.parseInt(args[0]);
+        boolean lift = Boolean.parseBoolean(args[1]);
+        double hoursOfSleep = Double.parseDouble(args[2]);
+        int daysBetweenWorkouts = Integer.parseInt(args[3]);
+        int slowTwitchPercentage = Integer.parseInt(args[4]);
+        int days = Integer.parseInt(args[5]);
+
 
         Simulation simulation = new Simulation(
                 intensity,
@@ -183,8 +189,12 @@ public class Simulation {
             averageCatabolicHormone[i] = simulation.averageCatabolicHormone();
         }
 
+        // Constructing the CSV filename based on parameters
+        String sleepHoursFormatted = args[2].replace('.', 'n');
+        String filename = String.format("%d_%s_%s_%d_%d.csv", intensity, lift ? "true" : "false", sleepHoursFormatted, daysBetweenWorkouts, slowTwitchPercentage);
+
         // Write to CSV
-        try (PrintWriter writer = new PrintWriter(new FileWriter("simulation_results.csv"))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
             writer.println("Day,Muscle Mass,Anabolic Hormone,Catabolic Hormone");
             for (int i = 0; i <= days; i++) {
                 writer.printf("%d,%.2f,%.2f,%.2f\n", i, muscleMass[i], averageAnabolicHormone[i], averageCatabolicHormone[i]);
@@ -194,3 +204,4 @@ public class Simulation {
         }
     }
 }
+
