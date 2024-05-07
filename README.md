@@ -20,6 +20,8 @@ chmod +x run_simulations.sh
 
 ./run_simulations.sh
 ```
+
+You will get multiple csv files with the results of the simulations.
  
 Change the content in the run_simulations.sh file to run the simulations you want.
 
@@ -27,12 +29,15 @@ Change the content in the run_simulations.sh file to run the simulations you wan
 # 3. Plot the results in the terminal
 ```bash
 python draw.py <filename.csv>
-
+```
+```bash
 # If you got the error "ModuleNotFoundError: No module named 'matplotlib'", run the following command
 pip install matplotlib
 # If you got the error "ModuleNotFoundError: No module named 'pandas'", run the following command
 pip install pandas
+```
 
+```bash
 # If you got the error "command not found: python", try
 python3 draw.py <filename.csv>
 ```
