@@ -120,7 +120,9 @@ public class Simulation {
                 mass += muscleFibers[i][j].getFiberSize();
             }
         }
-        return mass / (patches.length * patches[0].length);
+        // Assume Muscle Mass in the NetLogo plot is calculated as:
+        // sum of all fiber sizes / 100
+        return mass / 100.0;
     }
 
     public double averageAnabolicHormone() {
