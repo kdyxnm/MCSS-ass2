@@ -191,7 +191,7 @@ public class Simulation {
 
         // Constructing the CSV filename based on parameters
         String sleepHoursFormatted = args[2].replace('.', 'n');
-        String filename = String.format("%d_%s_%s_%d_%d.csv", intensity, lift ? "true" : "false", sleepHoursFormatted, daysBetweenWorkouts, slowTwitchPercentage);
+        String filename = String.format("%d_%s_%s_%d_%d_%d.csv", intensity, lift ? "true" : "false", sleepHoursFormatted, daysBetweenWorkouts, slowTwitchPercentage, days);
 
         // Write to CSV
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
