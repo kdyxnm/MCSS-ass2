@@ -3,12 +3,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Simulation {
-    private int GRID_SIZE = 17;
-    private Patch[][] patches;
+    public int GRID_SIZE = 17;
+    public Patch[][] patches;
     private MuscleFiber[][] muscleFibers;
     private int intensity; // [50, 100] step size 1
     private boolean lift;
-    private double hoursOfSleep; // [0, 12] step size 0.5
+    public double hoursOfSleep; // [0, 12] step size 0.5
     private int daysBetweenWorkouts; // [1, 30] step size 1
     private int slowTwitchPercentage; // [0, 100] step size 1
 
@@ -39,6 +39,18 @@ public class Simulation {
             }
         }
 
+    }
+
+    public double getHoursOfSleep() {
+        return hoursOfSleep;
+    }
+
+    public int getGridSize() {
+        return GRID_SIZE;
+    }
+
+    public Patch[][] getPatches() {
+        return patches;
     }
 
     public void performDailyActivity() {
