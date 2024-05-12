@@ -4,12 +4,12 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class AdvancedSimulation extends Simulation {
+public class DisorderedSleepingHours extends Simulation {
     private boolean irregularSleep;
     private Random random;
     private ArrayList<Double> dailyAdjustedSleepHours; // 存储每天调整后的睡眠时间
 
-    public AdvancedSimulation(
+    public DisorderedSleepingHours(
         int intensity,
         boolean lift,
         double hoursOfSleep,
@@ -52,7 +52,7 @@ public class AdvancedSimulation extends Simulation {
 
     public static void main(String[] args) {
         if (args.length < 7) {
-            System.out.println("Usage: java AdvancedSimulation <intensity> <lift> <hoursOfSleep> <daysBetweenWorkouts> <slowTwitchPercentage> <daysToSimulate> <irregularSleep>");
+            System.out.println("Usage: java DisorderedSleepingHours <intensity> <lift> <hoursOfSleep> <daysBetweenWorkouts> <slowTwitchPercentage> <daysToSimulate> <irregularSleep>");
             return;
         }
 
@@ -64,7 +64,7 @@ public class AdvancedSimulation extends Simulation {
         int days = Integer.parseInt(args[5]);
         boolean irregularSleep = Boolean.parseBoolean(args[6]);
 
-        AdvancedSimulation simulation = new AdvancedSimulation(
+        DisorderedSleepingHours simulation = new DisorderedSleepingHours(
             intensity,
             lift,
             hoursOfSleep,
@@ -83,7 +83,7 @@ public class AdvancedSimulation extends Simulation {
             simulation.developMuscle();
         }
 
-        String filename = "AdvancedSimulationResults.csv";
+        String filename = "DisorderedSleepingHoursResults.csv";
         simulation.saveResults(filename);
     }
 }
