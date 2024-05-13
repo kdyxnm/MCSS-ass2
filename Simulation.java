@@ -5,12 +5,12 @@ import java.io.PrintWriter;
 public class Simulation {
     public int GRID_SIZE = 17;
     public Patch[][] patches;
-    private MuscleFiber[][] muscleFibers;
-    private int intensity; // [50, 100] step size 1
-    private boolean lift;
+    public MuscleFiber[][] muscleFibers;
+    public int intensity; // [50, 100] step size 1
+    public boolean lift;
     public double hoursOfSleep; // [0, 12] step size 0.5
-    private int daysBetweenWorkouts; // [1, 30] step size 1
-    private int slowTwitchPercentage; // [0, 100] step size 1
+    public int daysBetweenWorkouts; // [1, 30] step size 1
+    public int slowTwitchPercentage; // [0, 100] step size 1
 
     public Simulation(
             int intensity,
