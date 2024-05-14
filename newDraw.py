@@ -2,36 +2,37 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import sys
 
-def main(filename):
-    try:
-        df = pd.read_csv(filename)
-    except FileNotFoundError:
-        print(f"Error: The file '{filename}' does not exist.")
-        sys.exit(1)
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        sys.exit(1)
+# Check if two filenames were passed as command-line arguments
+if len(sys.argv) < 3:
+    print("Usage: python draw.py <filename1> <filename2>")
+    sys.exit(1)  # Exit the script if the filenames are not provided
 
-    # Plotting
-    plt.figure(figsize=(10, 6))  # 设置图形的尺寸
+# Command-line arguments for the filenames
+filename1 = sys.argv[1]
+filename2 = sys.argv[2]
 
-    # Muscle Development Plot
-    plt.plot(df["Day"], df["Muscle Mass"], label="Muscle Mass", color='red')
-    plt.title('Muscle Development Over Time')
-    plt.xlabel('Day')
-    plt.ylabel('Muscle Mass (units)')
-    plt.grid(True)
-    plt.legend()
+# Load the data from CSV files into pandas DataFrames
+df1 = pd.read_csv(filename1)
+df2 = pd.read_csv(filename2)
 
-    # Show the plot
-    plt.tight_layout()  # 调整布局
-    plt.show()
+# Plotting
+plt.figure(figsize=(10, 5))
 
-if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python draw.py <filename>")
-        sys.exit(1)  # Exit the script if no filename is provided
+# Muscle Development Plot for the first file
+plt.plot(df1["Day"], df1["Muscle Mass"], label=f"Muscle Mass (File 1: {filename1})", color='red')
 
-    # the second command-line argument is the filename
-    filename = sys.argv[1]
-    main(filename)
+# Muscle Development Plot for the second file
+plt.plot(df2["Day"], df2["Muscle Mass"], label=f"Muscle Mass (File 2: {filename2})", color='blue')
+
+# Setting titles and labels
+plt.title('Comparison of Muscle Development')
+plt.xlabel('Day')
+plt.ylabel('Muscle Mass')
+plt.legend()
+plt.grid(True)
+
+# Adjust layout to prevent overlap
+plt.tight_layout()
+
+# Show the plot
+plt.show()
