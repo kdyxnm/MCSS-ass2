@@ -78,6 +78,6 @@ For instance, `./days_between_workouts.sh` will run the experiment observing dif
 
 + The data (.csv files) generated will be stored in `first-experiment/data_generated`
 
-+ The result of each experiment will be created at `first-experiment/data_generated`
++ The result of each experiment will be created at `first-experiment/results`
 
 Each script run would take no more than 10 seconds.
