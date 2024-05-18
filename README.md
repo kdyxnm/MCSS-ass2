@@ -4,17 +4,17 @@
 
 Acceptable parameters: 
 
- int intensity; // [50, 100] step size 1
+  int intensity; // [50, 100] step size 1
  
- boolean lift; // true or false
+  boolean lift; // true or false
  
- double hoursOfSleep; // [0, 12] step size 0.5
+  double hoursOfSleep; // [0, 12] step size 0.5
  
- int daysBetweenWorkouts; // [1, 30] step size 1
+  int daysBetweenWorkouts; // [1, 30] step size 1
  
- int slowTwitchPercentage; // [0, 100] step size 1
+  int slowTwitchPercentage; // [0, 100] step size 1
  
- int DaysToSimulate; // [1, ] step size 1
+  int DaysToSimulate; // [1, ] step size 1
 
 ```bash
 javac Simulation.java
