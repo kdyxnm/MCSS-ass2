@@ -6,6 +6,9 @@ cd "$(dirname "$0")/../.."
 # Create the 'workouts_various' directory within 'data_generated'
 mkdir -p first-experiment/data_generated/workouts_various
 
+# Ensure the 'results' directory exists
+mkdir -p first-experiment/results
+
 # File to store results
 result_file="first-experiment/results/workouts_various_results.csv"
 
