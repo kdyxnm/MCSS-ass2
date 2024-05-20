@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -127,9 +128,16 @@ public class DisorderedSleepingHours extends Simulation {
             sleepingHours[i] = simulation.dailyAdjustedSleepHours.get(i);
         }
 
+        String directoryPath = "DisorderedSleepingExperiments";
+        File directory = new File(directoryPath);
+        if (!directory.exists()) {
+            directory.mkdirs(); // Create the directory if it doesn't exist
+        }
+
         String sleepHoursFormatted = String.format("%.1f", hoursOfSleep).
                 replace('.', 'n');
-        String filename = String.format("%d_%s_%s_%d_%d_%d_%s.csv",
+        String filename = String.format("%s/%d_%s_%s_%d_%d_%d_%s.csv",
+                directoryPath,
                 intensity,
                 lift ? "true" : "false",
                 sleepHoursFormatted,
@@ -137,7 +145,6 @@ public class DisorderedSleepingHours extends Simulation {
                 slowTwitchPercentage,
                 days,
                 irregularSleep ? "true" : "false");
-
         // Write the results to a CSV file
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
             writer.println("Day,Sleeping Hours,Muscle Mass,Anabolic Hormone,Catabolic Hormone");

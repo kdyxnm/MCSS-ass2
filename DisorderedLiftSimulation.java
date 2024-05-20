@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -93,7 +94,14 @@ public class DisorderedLiftSimulation extends Simulation {
             averageCatabolicHormone[i] = simulation.averageCatabolicHormone();
         }
 
-        String filename = String.format("%d_%s_%.1f_%d_%d_%d_%.2f.csv",
+        String directoryPath = "DisorderedLiftExperiment";
+        File directory = new File(directoryPath);
+        if (!directory.exists()) {
+            directory.mkdirs(); // Create the directory if it doesn't exist
+        }
+
+        String filename = String.format("%s/%d_%s_%.1f_%d_%d_%d_%.2f.csv",
+                directoryPath,
                 intensity,
                 "true",
                 hoursOfSleep,
@@ -101,7 +109,6 @@ public class DisorderedLiftSimulation extends Simulation {
                 slowTwitchPercentage,
                 days,
                 exerciseProbability);
-
         // Write the results to a CSV file
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
             writer.println("Day,Muscle Mass,Anabolic Hormone,Catabolic Hormone");
